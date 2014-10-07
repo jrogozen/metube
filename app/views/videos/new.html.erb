@@ -9,7 +9,8 @@
   <% end %>
 
   title: <%= f.text_field :title %><br>
-  url: <%= f.text_field :url %><br>
-  <%= f.select(:user_id, @user_options) %>
+  youtube id: <%= f.text_field :url %><br>
+  user: <%= f.select(:user_id, @user_options) %>
+  description: <%= f.text_area :description %>
   <%= f.submit %>
 <% end %>

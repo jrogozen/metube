@@ -27,7 +27,7 @@ body {
   }
 }
 
-#main {
+.main {
   background: #fff;
   padding: 10px 20px;
   border: 1px solid #ddd;
@@ -66,4 +66,39 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+//sidebar
+.sidebar {
+  &.video-feed {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      width: 100%;
+      &:after {
+        content: " ";
+        visibility: hidden;
+        clear: both;
+        display: block;
+      }
+    }
+    .thumbnail {
+      width: 120px;
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 20px;
+
+    }
+    .info {
+      width: auto;
+    }
+  }
+}
+
+//edit screen
+.edit {
+  textarea {
+    height: 200px;
+  }
 }

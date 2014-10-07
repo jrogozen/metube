@@ -2,10 +2,18 @@ class VideosController < ApplicationController
 
   def index
     @videos = Video.all
+
+    if params[:query].present?
+      @videos = Video.search(params[:query], page: params[:page])
+    else
+      @videos = Video.all
+    end
+
   end
 
   def show
     @video = Video.find(params["id"])
+    @videos = Video.all
   end
 
   def new
@@ -46,9 +54,13 @@ class VideosController < ApplicationController
     redirect_to :action => 'index'
   end
 
+  def search
+    @videos = Video.search(params["search"])
+  end
+
   private
   def video_params
-    params.require(:video).permit(:title, :url, :user_id)
+    params.require(:video).permit(:title, :url, :user_id, :description)
   end
 
 end

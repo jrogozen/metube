@@ -1,0 +1,13 @@
+<ul class="sidebar video-feed">
+  <% @videos.each do |video| %>
+  <li>
+    <div class="thumbnail">
+      <%= link_to image_tag("http://img.youtube.com/vi/#{video.url}/default.jpg", :border => 0), video %>
+    </div>
+    <div class="info">
+      <h6><%= link_to video.title, video %></h6>
+      <p>by <%= video.user.username %></p>
+    </div>
+  </li>
+  <% end %>
+</ul>
