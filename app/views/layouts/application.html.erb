@@ -1,14 +1,49 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Metube</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+  <header id="main-header">
+    <div class="row">
+      <div class="logo small-3 columns">
+        metube
+      </div>
+      <div class="main-search small-6 columns">
+        <input type="text" placeholder="search..."/>
+      </div>
+      <div class="user-info small-3 columns">
+        <ul class="button-group radius round">
+        <li><a href="#" class="secondary tiny button">upload</a></li>
+        <li><a href="#" class="secondary tiny button">my account</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <div class="row">
+    <!-- <div id="main" class="large-12 columns"> -->
+      <%= yield %>
+    <!-- </div> -->
+  </div>
+
+  <footer id="main-footer">
+    <div class="row">
+      <div class="large-12 columns">
+      metube
+      </div>
+    </div>
+  </footer>
+    
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

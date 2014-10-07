@@ -38,3 +38,6 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'pry-byebug'
+gem 'rspec-rails'
+gem 'foundation-rails'

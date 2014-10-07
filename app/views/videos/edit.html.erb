@@ -1,0 +1,17 @@
+<%= form_for @video do |f| %>
+
+  <% if @video.errors.any? %>
+    <ul>
+      <% @video.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  title: <%= f.text_field :title %><br>
+  url: <%= f.text_field :url %><br>
+  <%= f.select(:user_id, @user_options) %>
+  <%= f.submit %>
+<% end %>
+
+<p><%= link_to "Delete", @video, :confirm => "Are you sure?", :method => :delete %></p>
