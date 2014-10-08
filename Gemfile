@@ -41,3 +41,5 @@ gem 'spring',        group: :development
 gem 'pry-byebug'
 gem 'rspec-rails'
 gem 'foundation-rails'
+gem 'carrierwave'
+gem 'rmagick', :require => 'RMagick'

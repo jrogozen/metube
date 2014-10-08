@@ -47,10 +47,6 @@ class PlaylistsController < ApplicationController
     redirect_to :action => 'index'
   end
 
-  def add_video
-    
-  end
-
   private
   def playlist_params
     params.require(:playlist).permit(:name, :user_id)

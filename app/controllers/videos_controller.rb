@@ -5,8 +5,9 @@ class VideosController < ApplicationController
   end
 
   def show
-    @video1 = Video.find(params["id"])
+    @video = Video.find(params["id"])
     @videos = Video.all
+    @comments = @video.comments
   end
 
   def new
@@ -49,7 +50,7 @@ class VideosController < ApplicationController
 
   def add_to_playlist
     @video = Video.find(params[:id])
-    @playlist = Playlist.find(params[:video][:playlist_id])
+    @playlist = Playlist.find(params[:vid][:playlist_id])
     @video.playlists << @playlist
 
     redirect_to :action => "show"

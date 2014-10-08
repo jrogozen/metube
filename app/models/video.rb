@@ -1,6 +1,8 @@
 class Video < ActiveRecord::Base
   belongs_to :user
 
+  has_many :comments
+
   has_many :videoPlaylists
 
   has_many :playlists, :through => :videoPlaylists

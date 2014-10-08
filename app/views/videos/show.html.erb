@@ -1,27 +1,41 @@
 <div class="large-8 columns">
 
   <div class="videoWrapper">
-    <iframe width="560" height="315" src="//www.youtube.com/embed/<%= @video1.url %>/?hd=1&rel=0&autohide=1&showinfo=0" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="//www.youtube.com/embed/<%= @video.url %>/?hd=1&rel=0&autohide=1&showinfo=0" frameborder="0" allowfullscreen></iframe>
   </div>
 
   <div class="main video-info">
-    <h3><%= @video1.title %></h3>
-    <p><%= link_to @video1.user.username, @video1.user %></p>
+    <h3><%= @video.title %></h3>
+    <p><%= link_to @video.user.username, @video.user %></p>
 
-    <%= form_tag("/videos/#{@video1.id}/add_to_playlist", method: "post") do %>
-      <%= collection_select(:video, :playlist_id, Playlist.all, :id, :name) %>
-      <%= submit_tag "Add", class: "add" %>
+    <%= form_tag("/videos/#{@video.id}/add_to_playlist", method: "post") do %>
+      <%= collection_select(:vid, :playlist_id, Playlist.all, :id, :name) %>
+      <%= submit_tag "Add", class: "button tiny" %>
     <% end %>
 
   </div>
 
   <div class="main video-details">
-    <h5>Published on <%= @video1.created_at %></h5>
-    <p><%= @video1.description %></p>
+    <!-- <h5>Published on <%= @video.created_at %></h5> -->
+    <p><%= @video.description %></p>
   </div>
 
   <div class="main video-comments">
     <h5>All Comments</h5>
+    <%= form_tag("/videos/#{@video.id}/comments", method: "post") do %>
+      <%= text_area_tag :content %>
+      <%= hidden_field_tag :video_id, "#{@video.id}" %>
+      <%= submit_tag "Post Comment", class: "button tiny" %>
+    <% end %>
+
+    <ul class="comments-list">
+      <% @comments.each do |comment| %>
+        <li>
+          <p class="comment-user"><%= link_to comment.user.username, comment.user %></p>
+          <p class="comment-content"><%= comment.content %></p>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
 </div>
