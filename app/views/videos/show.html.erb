@@ -8,8 +8,9 @@
     <h3><%= @video.title %></h3>
     <p><%= link_to @video.user.username, @video.user %></p>
 
+
     <%= form_tag("/videos/#{@video.id}/add_to_playlist", method: "post") do %>
-      <%= collection_select(:vid, :playlist_id, Playlist.all, :id, :name) %>
+      <%= collection_select(:vid, :playlist_id, current_user.playlists, :id, :name) %>
       <%= submit_tag "Add", class: "button tiny" %>
     <% end %>
 
@@ -21,21 +22,28 @@
   </div>
 
   <div class="main video-comments">
-    <h5>All Comments</h5>
-    <%= form_tag("/videos/#{@video.id}/comments", method: "post") do %>
-      <%= text_area_tag :content %>
-      <%= hidden_field_tag :video_id, "#{@video.id}" %>
-      <%= submit_tag "Post Comment", class: "button tiny" %>
-    <% end %>
 
-    <ul class="comments-list">
-      <% @comments.each do |comment| %>
-        <li>
-          <p class="comment-user"><%= link_to comment.user.username, comment.user %></p>
-          <p class="comment-content"><%= comment.content %></p>
-        </li>
+    <h5>All Comments (<%= @video.comments.length %>)</h5>
+
+    <div class="new-comment-container">
+
+      <% if user_signed_in? %>
+        <div class="user-icon">
+          <%= image_tag current_user.avatar_url(:thumb) %>
+        </div>
+
+        <div class="post-comment form">
+          <%= form_for [@video, @comment] do |f| %>
+            <%= f.text_area :content, class: "text-box" %>
+            <%= f.hidden_field :video_id, :value => @video.id %>
+          <% end %>
+        </div>
       <% end %>
-    </ul>
+
+    </div>
+
+    <%= render :partial => "shared/comments" %>
+
   </div>
 
 </div>

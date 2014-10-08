@@ -1,0 +1,15 @@
+<ul class="comments-list">
+  <% @comments.each do |comment| %>
+    <li>
+    <div class="user-icon">
+      <%= image_tag comment.user.avatar_url(:thumb) %>
+    </div>
+
+    <div class="comment-info">
+     <p class="comment-user"><%= link_to comment.user.username, comment.user %></p>
+      <p class="comment-content"><%= comment.content %></p>
+    </div>
+     
+    </li>
+  <% end %>
+</ul>

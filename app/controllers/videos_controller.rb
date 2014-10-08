@@ -8,15 +8,15 @@ class VideosController < ApplicationController
     @video = Video.find(params["id"])
     @videos = Video.all
     @comments = @video.comments
+    @comment = Comment.new
   end
 
   def new
-    @user_options = User.all.map{|u| [u.username, u.id]}
     @video = Video.new
   end
 
   def create
-    @video = Video.new(video_params)
+    @video = current_user.videos.new(video_params)
 
     if @video.save
       redirect_to @video

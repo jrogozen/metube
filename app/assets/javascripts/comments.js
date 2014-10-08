@@ -1,12 +1,8 @@
-// $('.video-comments form').submit(function() {
-//   var values =  $(this);
-//   console.log($(this));
-//   $.ajax({
-//     type: "POST",
-//     url: $(this).attr('action'),
-//     data: values,
-//   }).success(function(data){
-//     console.log('success');
-//   });
-//   return false;
-// });
+$(document).ready(function() {
+  $('.text-box').keypress(function(e) {
+    if (e.which === 13) {
+      e.preventDefault();
+      $('form').submit();
+    }
+  });
+});

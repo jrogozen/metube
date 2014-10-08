@@ -8,7 +8,14 @@ body {
   min-width: 1024px;
 }
 
+.notice, .alert {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+}
+
 #main-header {
+  height: 61px;
   background: #fff;
   padding: 10px;
   margin-bottom: 10px;

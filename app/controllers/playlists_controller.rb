@@ -10,12 +10,11 @@ class PlaylistsController < ApplicationController
   end
 
   def new
-    @user_options = User.all.map{|u| [u.username, u.id]}
     @playlist = Playlist.new
   end
 
   def create
-    @playlist = Playlist.new(playlist_params)
+    @playlist = current_user.playlists.new(playlist_params)
 
     if @playlist.save
       redirect_to @playlist
@@ -49,7 +48,7 @@ class PlaylistsController < ApplicationController
 
   private
   def playlist_params
-    params.require(:playlist).permit(:name, :user_id)
+    params.require(:playlist).permit(:name)
   end
 
 end
