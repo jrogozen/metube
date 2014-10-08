@@ -41,4 +41,3 @@ gem 'spring',        group: :development
 gem 'pry-byebug'
 gem 'rspec-rails'
 gem 'foundation-rails'
-gem 'searchkick'

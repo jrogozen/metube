@@ -2,17 +2,10 @@ class VideosController < ApplicationController
 
   def index
     @videos = Video.all
-
-    if params[:query].present?
-      @videos = Video.search(params[:query], page: params[:page])
-    else
-      @videos = Video.all
-    end
-
   end
 
   def show
-    @video = Video.find(params["id"])
+    @video1 = Video.find(params["id"])
     @videos = Video.all
   end
 
@@ -54,8 +47,12 @@ class VideosController < ApplicationController
     redirect_to :action => 'index'
   end
 
-  def search
-    @videos = Video.search(params["search"])
+  def add_to_playlist
+    @video = Video.find(params[:id])
+    @playlist = Playlist.find(params[:video][:playlist_id])
+    @video.playlists << @playlist
+
+    redirect_to :action => "show"
   end
 
   private

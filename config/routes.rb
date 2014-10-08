@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :videos
+  post '/videos/:id/add_to_playlist' => "videos#add_to_playlist"
 
+
+  resources :videos do
+    resources :comments, :only => [:create]
+  end 
+
+  resources :comments, :only => [:update, :destroy]
+  
+  resources :playlists
   resources :users
 
   root 'videos#index'

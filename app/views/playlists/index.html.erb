@@ -1,0 +1,11 @@
+<div class="main large-12 columns">
+  <h3>Playlists</h3>
+  <ul class="video-list small-block-grid-5">
+    <% @playlists.each do |playlist| %>
+    <li>
+      <h5><%= link_to playlist.name, playlist %></h5>
+      <p>created by <%= playlist.user.username %></p>
+    </li>
+    <% end %>
+  </ul>
+</div>

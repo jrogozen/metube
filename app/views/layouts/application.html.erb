@@ -19,12 +19,7 @@
         metube
       </div>
       <div class="main-search small-6 columns">
-        <!-- search videos -->
-        <%= form_tag "videos", method: "get" do %>
-          <%= text_field_tag :query, params[:query] %>
-          <%= submit_tag "Search" %>
-          <%= link_to "clear", "videos" %>
-        <% end %>
+        searchz
       </div>
       <div class="user-info small-3 columns">
         <ul class="button-group radius round">
@@ -50,5 +45,6 @@
   </footer>
     
     <%= javascript_include_tag "application" %>
+ 
   </body>
 </html>
