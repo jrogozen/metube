@@ -56,6 +56,15 @@ class VideosController < ApplicationController
     redirect_to :action => "show"
   end
 
+  def add_to_favorites
+    @video = Video.find(params["video_id"])
+    @user = User.find(params["user_id"])
+    
+    @video.favorites.create(:user => @user)
+
+    redirect_to :action => 'index'
+  end
+
   private
   def video_params
     params.require(:video).permit(:title, :url, :user_id, :description)

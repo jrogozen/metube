@@ -13,12 +13,43 @@
     <p><%= @user.email %></p>
   </div>
 
-  <% if !@user.comments.empty? %>
-    <div class="main user-comments">
-        <h4>Comments</h4>
-        <%= render :partial => "shared/comments" %>
+    <div class="main user-playlists">
+      <h4>Playlists <small>(<%= link_to "Add new", new_playlist_path %>)</small></h4>
+
+      <% if !@user.playlists.empty? %>
+        <%= render :partial => "shared/playlists" %>
+      <% end %>
     </div>
-  <% end %>
+
+    <% if !@f_playlists.empty? %>
+      <div class="main favorited-playlists">
+        <h4>Favorited Playlists</h4>
+        <% @f_playlists.each do |fp| %>
+          <%= link_to fp.name, fp %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if !@videos.empty? %>
+      <div class="main user-videos">
+        <h4>User Videos</h4>
+        <%= render :partial => "shared/listvideos" %>
+      </div>
+    <% end %>
+
+    <% if !@f_videos.empty? %>
+      <div class="main favorited-videos">
+        <h4>Favorited Videos</h4>
+        <%= render :partial => "shared/listfavoritevideos" %>
+      </div>
+    <% end %>
+
+    <% if !@user.comments.empty? %>
+      <div class="main user-comments">
+          <h4>Comments</h4>
+          <%= render :partial => "shared/comments" %>
+      </div>
+    <% end %>
 
 </div>
 

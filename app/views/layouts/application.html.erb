@@ -13,52 +13,33 @@
 
   <body>
 
-  <header id="main-header">
-    <div class="row">
-      <div class="logo small-3 columns">
-      <%= link_to image_tag("youtube.jpg", alt: "metube"), root_path %>
-      </div>
-      <div class="main-search small-6 columns">
-      </div>
-      <div class="user-info small-3 columns">
-        <ul class="button-group radius round">
-
-
-          <%= link_to "upload", "/videos/new", class: "secondary tiny button" %>
-
-          <!-- alternate basd on login -->
-          <% if user_signed_in? %>
-            <%= link_to "hi, #{ current_user.username}", current_user, class: "secondary tiny button" %>
-          <% else %>
-            <%= link_to "sign in", "/users/sign_in", class: "secondary tiny button" %>
-            
-          <% end %>
-
-        </li>
-        </ul>
-      </div>
-    </div>
-  </header>
-
-  <div class="row">
-
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% elsif alert %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
-
-    <%= yield %>
-
+  <div class="header-container">
+    <%= render :partial => "shared/header" %>
   </div>
 
-  <footer id="main-footer">
+  <div class="body-container">
+
     <div class="row">
-      <div class="large-12 columns">
-      metube
-      </div>
+
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% elsif alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+
     </div>
-  </footer>
+
+    <footer id="main-footer">
+      <div class="row">
+        <div class="large-12 columns">
+        metube
+        </div>
+      </div>
+    </footer>
+
+  </div>
     
     <%= javascript_include_tag "application" %>
  

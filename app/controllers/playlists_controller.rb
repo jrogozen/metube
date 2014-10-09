@@ -46,6 +46,15 @@ class PlaylistsController < ApplicationController
     redirect_to :action => 'index'
   end
 
+  def add_to_favorites
+    @playlist = Playlist.find(params["playlist_id"])
+    @user = User.find(params["user_id"])
+    
+    @playlist.favorites.create(:user => @user)
+
+    redirect_to :action => 'index'
+  end
+
   private
   def playlist_params
     params.require(:playlist).permit(:name)

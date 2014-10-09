@@ -7,34 +7,19 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @comments = @user.comments
+    @playlists = @user.playlists
+    @videos = @user.videos
+
+    @fp = @user.favorites.where(:favoritable_type => "Playlist")
+    @fv = @user.favorites.where(:favoritable_type => "Video")
+
+    @f_playlists = @fp.map {|x| Playlist.find(x.favoritable_id)}
+    @f_videos = @fv.map {|x| Video.find(x.favoritable_id)}
   end
 
-  # def new
-  #   @user = User.new
-  # end
-
-  # def create
-  #   @user = User.new(user_params)
-
-  #   if @user.save
-  #     redirect_to @user
-  #   else
-  #     render :new
-  #   end
-  # end
-
-  # def edit
-  # end
-
-  # def update
-  # end
-
-  # def destroy
-  # end
-
-  # private
-  # def user_params
-  #   params.require(:user).permit(:name, :username, :email, :avatar)
-  # end
+  def avatar
+    @avatar = User.find(params[:id]).avatar
+    render json: @avatar
+  end
 
 end

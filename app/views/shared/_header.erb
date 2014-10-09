@@ -1,0 +1,35 @@
+<header id="main-header">
+  <div class="row">
+    <div class="logo small-3 columns">
+    <%= link_to image_tag("youtube.jpg", alt: "metube"), root_path %>
+    </div>
+    <div class="main-search small-6 columns">
+    </div>
+    <div class="user-info small-3 columns">
+      <ul class="button-group radius round">
+
+
+        <%= link_to "upload", "/videos/new", class: "secondary tiny button" %>
+
+        <!-- alternate basd on login -->
+        <% if user_signed_in? %>
+          <%= link_to "hi, #{ current_user.username}", current_user, class: "secondary tiny button" %>
+        <% else %>
+          <%= link_to "sign in", "/users/sign_in", class: "secondary tiny button" %>
+          
+        <% end %>
+
+      </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div id="top-bar">
+  <div class="row">
+    <div class="selector large-12 columns">
+      <%= link_to "Videos", root_path %>
+      <%= link_to "Playlists", playlists_path %>
+    </div>
+  </div>
+</div>

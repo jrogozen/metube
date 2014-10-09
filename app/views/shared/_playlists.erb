@@ -1,0 +1,7 @@
+<ul class="small-block-grid-4">
+  <% @playlists.each do |pl| %>
+    <li> 
+      <h5><%= link_to pl.name, pl %></h5>
+    </li>
+  <% end %>
+</ul>

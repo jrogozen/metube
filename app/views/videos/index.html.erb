@@ -1,12 +1,5 @@
 <div class="main large-12 columns">
   <h3>Watch Videos</h3>
-  <ul class="video-list small-block-grid-4">
-    <% @videos.each do |video| %>
-    <li>
-      <%= link_to image_tag("http://img.youtube.com/vi/#{video.url}/hqdefault.jpg", :border => 0), video %>
-      <h5><%= link_to video.title, video %></h5>
-      <p>posted by <%= link_to video.user.username, video.user %></p>
-    </li>
-    <% end %>
-  </ul>
+  <%= render :partial => "shared/listvideos" %>
+
 </div>

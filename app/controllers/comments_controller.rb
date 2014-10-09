@@ -6,7 +6,13 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.create(comment_params)
-    redirect_to "/videos/#{params[:video_id]}"
+    avatar = current_user.avatar_url(:thumb)
+    
+    @something = @comment.as_json
+    @something["avatar_url"] = avatar
+    @something["username"] = current_user.username
+    
+    render json: @something
   end
 
   def edit

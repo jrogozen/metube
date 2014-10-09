@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   
   resources :playlists
   resources :users
+  
+  post "/playlists/favorite", to: "playlists#add_to_favorites", as: "playlist_favorite"
+
+  post "/videos/favorite", to: "videos#add_to_favorites", as: "video_favorite"
+
+  get "/users/:id/avatar", to: "users#avatar", as: "user_avatar"
 
   root 'videos#index'
 

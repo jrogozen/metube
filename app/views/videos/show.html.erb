@@ -17,8 +17,8 @@
   </div>
 
   <div class="main video-details">
-    <!-- <h5>Published on <%= @video.created_at %></h5> -->
     <p><%= @video.description %></p>
+    <p><%= link_to "add video to favorites", video_favorite_path(:user_id => current_user.id, :video_id => @video.id), method: :post %></p>
   </div>
 
   <div class="main video-comments">
@@ -32,11 +32,10 @@
           <%= image_tag current_user.avatar_url(:thumb) %>
         </div>
 
-        <div class="post-comment form">
-          <%= form_for [@video, @comment] do |f| %>
-            <%= f.text_area :content, class: "text-box" %>
-            <%= f.hidden_field :video_id, :value => @video.id %>
-          <% end %>
+        <div data-video-id="<%= @video.id %>" data-user-id="<%= current_user.id %>" class="post-comment form">
+
+        <%= text_area :comment, :content %>
+
         </div>
       <% end %>
 

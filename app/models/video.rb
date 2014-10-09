@@ -7,6 +7,8 @@ class Video < ActiveRecord::Base
 
   has_many :playlists, :through => :videoPlaylists
 
+  has_many :favorites, :as => :favoritable
+
   validates :user, :presence => true
   validates :url, :presence => true
 end

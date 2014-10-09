@@ -14,11 +14,22 @@ body {
   padding: 10px 20px;
 }
 
+.header-container {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+
+.body-container {
+  padding-top: 125px;
+  position: relative;
+  z-index: 1;
+}
+
 #main-header {
   height: 61px;
   background: #fff;
   padding: 10px;
-  margin-bottom: 10px;
   border-bottom: 1px solid #ddd;
   .logo {
 
@@ -31,6 +42,27 @@ body {
   }
   .button-group {
     float: right;
+  }
+}
+
+#top-bar {
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  .selector {
+    margin: 0 auto;
+    text-align: center;
+    height: 28px;
+    a {
+      display: inline-block;
+      color: black;
+      margin: 0 10px;
+      &:hover {
+        padding-bottom: 11px;
+        border-bottom: 3px solid red;
+      }
+    }
   }
 }
 
@@ -109,3 +141,5 @@ body {
     height: 200px;
   }
 }
+
+
