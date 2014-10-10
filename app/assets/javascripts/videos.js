@@ -2,7 +2,7 @@ $(document).ready( function() {
   $('.main-search').find('input').keypress(function(e) {
     if (e.which === 13) {
       e.preventDefault();
-
+      e.stopPropagation();
 
       var $q = $('.main-search').find('input').val();
       var $data = {
@@ -33,3 +33,7 @@ $(document).ready( function() {
     }
   });
 });
+
+$(document).click (function (e) {
+  $('.search-dropdown-container').hide();
+})
