@@ -90,6 +90,15 @@
           float: left;
           padding: 0;
           position: relative;
+          &.upload {
+            margin-right: 20px;
+            a {
+                color: black !important;
+              &:hover {
+                color: black !important;
+              }
+            }
+          }
           &.avatar {
               margin-right: 20px;
             }

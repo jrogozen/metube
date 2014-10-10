@@ -19,6 +19,9 @@
         
         <div class="info">
           <ul>
+            <li class="upload">
+              <%= link_to "upload", new_video_path, class: "secondary tiny button" %>
+            </li>
             <li class="avatar">
               <%= image_tag current_user.avatar_url(:thumb) %>
             </li>
