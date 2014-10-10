@@ -9,16 +9,20 @@
     <p><%= link_to @video.user.username, @video.user %></p>
 
 
-    <%= form_tag("/videos/#{@video.id}/add_to_playlist", method: "post") do %>
-      <%= collection_select(:vid, :playlist_id, current_user.playlists, :id, :name) %>
-      <%= submit_tag "Add", class: "button tiny" %>
+    <% if !@playlists.nil? %>
+      <%= form_tag("/videos/#{@video.id}/add_to_playlist", method: "post") do %>
+        <%= collection_select(:vid, :playlist_id, current_user.playlists, :id, :name) %>
+        <%= submit_tag "Add", class: "button tiny" %>
+      <% end %>
     <% end %>
 
   </div>
 
   <div class="main video-details">
     <p><%= @video.description %></p>
+    <% if current_user %>
     <p><%= link_to "add video to favorites", video_favorite_path(:user_id => current_user.id, :video_id => @video.id), method: :post %></p>
+    <% end %>
   </div>
 
   <div class="main video-comments">
