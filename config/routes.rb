@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   post "/videos/favorite", to: "videos#add_to_favorites", as: "video_favorite"
 
+  post "/videos/search", to: "videos#search", as: "video_search"
+
   get "/users/:id/avatar", to: "users#avatar", as: "user_avatar"
 
   root 'videos#index'

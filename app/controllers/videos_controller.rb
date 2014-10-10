@@ -1,5 +1,7 @@
 class VideosController < ApplicationController
 
+
+
   def index
     @videos = Video.all
   end
@@ -9,10 +11,14 @@ class VideosController < ApplicationController
     @videos = Video.all
     @comments = @video.comments
     @comment = Comment.new
+
   end
 
   def new
     @video = Video.new
+    @video.title = params["title"]
+    @video.url = params["youtubeid"]
+    @video.description = params["description"]
   end
 
   def create
@@ -63,6 +69,12 @@ class VideosController < ApplicationController
     @video.favorites.create(:user => @user)
 
     redirect_to :action => 'index'
+  end
+
+  def search
+    search = params["q"]
+    response = HTTParty.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + search + '&key=' + @y_key)
+    render json: response.body
   end
 
   private

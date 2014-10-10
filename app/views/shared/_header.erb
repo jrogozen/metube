@@ -4,10 +4,14 @@
     <%= link_to image_tag("youtube.jpg", alt: "metube"), root_path %>
     </div>
     <div class="main-search small-6 columns">
+    
+      <%= text_field_tag :q, nil, placeholder: "Enter search..." %>
+      <div class="search-dropdown-container">
+
+      </div>
     </div>
     <div class="user-info small-3 columns">
       <ul class="button-group radius round">
-
 
         <%= link_to "upload", "/videos/new", class: "secondary tiny button" %>
 

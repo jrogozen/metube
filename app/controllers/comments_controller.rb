@@ -11,15 +11,8 @@ class CommentsController < ApplicationController
     @something = @comment.as_json
     @something["avatar_url"] = avatar
     @something["username"] = current_user.username
-    
+
     render json: @something
-  end
-
-  def edit
-
-  end
-
-  def update
   end
 
   def destroy
